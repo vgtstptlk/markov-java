@@ -3,7 +3,6 @@ package com.vgtstptlk.runner.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 
 @Entity
@@ -12,9 +11,10 @@ public class Run {
     private Long id;
     private Long userId;
     private String name;
-    private Double length;
-    private byte heavily;
+    private Double length; // in milliseconds
+    private Integer heavily;
     private String description;
+    private Integer timeRun;
     private LocalDateTime date;
     private String status;
 
@@ -50,11 +50,11 @@ public class Run {
         this.length = length;
     }
 
-    public byte getHeavily() {
+    public Integer getHeavily() {
         return heavily;
     }
 
-    public void setHeavily(byte heavily) {
+    public void setHeavily(Integer heavily) {
         this.heavily = heavily;
     }
 
@@ -64,6 +64,14 @@ public class Run {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Integer getTimeRun() {
+        return timeRun;
+    }
+
+    public void setTimeRun(Integer timeRun) {
+        this.timeRun = timeRun;
     }
 
     public LocalDateTime getDate() {
@@ -85,12 +93,14 @@ public class Run {
     public Run() {
     }
 
-    public Run(Long userId, String name, Double length, byte heavily, String description, LocalDateTime date, String status) {
+    public Run(Long userId, String name, Double length, Integer heavily,
+               String description, Integer timeRun, LocalDateTime date, String status) {
         this.userId = userId;
         this.name = name;
         this.length = length;
         this.heavily = heavily;
         this.description = description;
+        this.timeRun = timeRun;
         this.date = date;
         this.status = status;
     }
